@@ -147,6 +147,64 @@ O(V + E)
 
 ---
 
+## Bộ Test
+
+### Đồ Thị Đầu Vào
+**Số đỉnh:** 7 (được đánh số từ 0 đến 6)  
+**Cạnh có trọng số:**  
+- (0, 1, 2)  
+- (0, 4, 1)  
+- (1, 2, 3)  
+- (4, 2, 2)  
+- (4, 5, 4)  
+- (5, 6, 1)  
+- (2, 3, 6)  
+
+### Đỉnh Nguồn
+**Nguồn:** 0  
+
+### Kết Quả 
+**Khoảng cách từ đỉnh nguồn (đỉnh 0):**  
+- dist(0, 0) = 0  
+- dist(0, 1) = 2  
+- dist(0, 2) = 3  
+- dist(0, 3) = 9  
+- dist(0, 4) = 1  
+- dist(0, 5) = 5  
+- dist(0, 6) = 6  
+
+---
+
+### Đồ Thị Đầu Vào
+**Số đỉnh:** 5 (được đánh số từ 0 đến 4)  
+**Cạnh có trọng số:**  
+- (0, 1, -1)  
+- (0, 2, 4)  
+- (1, 2, 3)  
+- (1, 3, 2)  
+- (1, 4, 2)  
+- (3, 2, 5)  
+- (3, 1, 1)  
+- (4, 3, -3)  
+
+### Đỉnh Nguồn
+**Nguồn:** 0  
+
+### Kết Quả 
+**Khoảng cách từ đỉnh nguồn (đỉnh 0):**  
+- dist(0, 0) = 0  
+- dist(0, 1) = -1  
+- dist(0, 2) = 2  
+- dist(0, 3) = -2  
+- dist(0, 4) = 1  
+
+---
+
+### Ghi Chú
+1. Bao gồm cả trọng số cạnh dương và âm (nhưng đảm bảo không có chu trình âm do đây là DAG).
+2. Với các đỉnh không thể tới được từ nguồn, xuất `Vô cực`.
+
+
 ## Kết luận
 
 Giải thuật tìm đường đi ngắn nhất trong DAG sử dụng sắp xếp topo và thư giãn cạnh là cách tiếp cận nhanh và hiệu quả. Đặc tính không có chu trình của DAG giúp đảm bảo tính đúng đắn và đơn giản hóa việc xử lý.
