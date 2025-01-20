@@ -146,6 +146,58 @@ O(V + E)
 \]
 
 ---
+## Mã Giả
+
+```text
+Định nghĩa: INF = một giá trị rất lớn (đại diện cho vô cực)
+
+Hàm FIND_SHORTEST_DISTANCE(n, edges, source):
+    // n: Số lượng đỉnh trong đồ thị
+    // edges: Danh sách các cạnh (src, dest, weight)
+    // source: Đỉnh nguồn
+
+    1. Tạo danh sách kề adjList[n] để lưu các cạnh:
+       adjList[i] chứa danh sách các cạnh xuất phát từ đỉnh i.
+       Mỗi cạnh được biểu diễn bởi (dest, weight).
+
+    2. Khởi tạo:
+       cost[i] = INF với mọi i từ 0 đến n-1
+       cost[source] = 0 // Khoảng cách từ nguồn đến chính nó là 0
+
+    3. Thực hiện sắp xếp topo:
+       Tạo mảng departure[n] để lưu thời gian hoàn thành của từng đỉnh.
+       Tạo mảng discovered[n] để đánh dấu đỉnh đã được thăm.
+       Khởi tạo departure và discovered với giá trị ban đầu là rỗng hoặc false.
+       time = 0
+
+       Cho mỗi đỉnh v từ 0 đến n-1:
+           Nếu v chưa được thăm (discovered[v] == false):
+               Gọi hàm DFS(v, adjList, discovered, departure, time)
+
+    4. Duyệt qua các đỉnh theo thứ tự topo (từ cuối departure về đầu):
+       Cho mỗi đỉnh v từ n-1 đến 0 trong mảng departure:
+           Cho mỗi cạnh (v → u, weight) trong adjList[v]:
+               Nếu cost[v] ≠ INF và cost[v] + weight < cost[u]:
+                   Cập nhật cost[u] = cost[v] + weight
+
+    5. In kết quả:
+       Cho mỗi đỉnh i từ 0 đến n-1:
+           Nếu cost[i] == INF:
+               In "dist(source, i) = INF"
+           Ngược lại:
+               In "dist(source, i) = cost[i]"
+
+Hàm DFS(v, adjList, discovered, departure, time):
+    Đánh dấu v là đã được thăm (discovered[v] = true)
+
+    Cho mỗi cạnh (v → u) trong adjList[v]:
+        Nếu u chưa được thăm (discovered[u] == false):
+            Gọi hàm DFS(u, adjList, discovered, departure, time)
+
+    Ghi nhận thời gian kết thúc của v:
+    departure[time] = v
+    time = time + 1
+
 
 ## Bộ Test
 
